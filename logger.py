@@ -2,9 +2,9 @@ import logging
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
-formater = logging.Formatter("%(asctime)s | %(levelno)s | %(funcName)s| %(message)s")
+formatter = logging.Formatter("%(asctime)s | %(levelno)s | %(funcName)s| %(message)s")
 f_handler = logging.FileHandler('logg.log')
-f_handler.setFormatter(formater)
+f_handler.setFormatter(formatter)
 logger.addHandler(f_handler)
 
 logging.basicConfig(

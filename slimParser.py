@@ -16,7 +16,7 @@ class SlimParser():
             text = f.read()
 
         lines = text.splitlines()
-        sections = re.findall(r'\[.*?\]', text)
+        sections = re.findall(r'\[[^\[\]\n]+\]', text)
 
         for line in lines:
             line = line.strip()
@@ -47,10 +47,10 @@ class SlimParser():
 
 
 
-test = SlimParser('data.txt')
+test = SlimParser('../data.txt')
 
 print(test.getHeaders())
 
-test.cleanSection('Proggrams')
+test.cleanSection('Programs')
 print(test.get('Programs'))
 

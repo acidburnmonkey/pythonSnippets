@@ -2,8 +2,6 @@
 this script parses conf file [section] -> content as key value pairs of Slimparser()
 '''
 
-import re
-
 
 class SlimParser():
     def __init__(self,file):
@@ -16,15 +14,26 @@ class SlimParser():
             text = f.read()
 
         lines = text.splitlines()
-        sections = re.findall(r'\[[^\[\]\n]+\]', text)
 
+        # Looks for  [headers]
         for line in lines:
             line = line.strip()
-            if line in sections:
-                self.current_key = line.strip('[]')
-                self.headers[self.current_key] = []
+
+            if (
+                line.startswith('[')
+                and line.endswith(']')
+                and len(line) > 2
+                and line.count('[') == 1
+                and line.count(']') == 1
+            ):
+                section_name = line[1:-1].strip()
+
+                if section_name:
+                    self.current_key = section_name
+                    self.headers[self.current_key] = []
             elif self.current_key:
                 self.headers[self.current_key].append(line)
+
 
     def getHeaders(self):
         return (self.headers.keys())

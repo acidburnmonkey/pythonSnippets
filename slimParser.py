@@ -45,13 +45,19 @@ class SlimParser():
     def cleanSection(self, section):
         """Strips and removes empty lines, duplicates from a section."""
         if section in self.headers:
-            self.headers[section] = set(
+            self.headers[section] = list(set(
                     line.strip() for line in self.headers[section] if line.strip()
-                    )
+                    ))
 
         elif section not in self.headers:
             raise ValueError(f"Section '{section}' not found in headers.")
 
+    def cleanAll(self):
+        """Strips and removes empty lines, duplicates from a All the file."""
+        for section in self.headers.keys():
+            self.headers[section] = list(set(
+                    line.strip() for line in self.headers[section] if line.strip()
+                    ))
 
 
 
@@ -59,7 +65,15 @@ class SlimParser():
 test = SlimParser('../data.txt')
 
 print(test.getHeaders())
+test.cleanAll()
 
-test.cleanSection('Programs')
 print(test.get('Programs'))
+
+
+
+
+
+
+
+
 

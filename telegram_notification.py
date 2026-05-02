@@ -5,10 +5,7 @@ text = ' this is a test and message goes here'
 api = ''
 url = f'https://api.telegram.org/bot{api}/sendMessage'
 
-data = {
-    'chat_id': chat_id,
-    'text': text
-}
+data = {'chat_id': chat_id, 'text': text}
 
 response = requests.post(url, data=data)
 

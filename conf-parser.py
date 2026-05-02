@@ -4,6 +4,7 @@ this script parses conf file [section] -> content as key value pairs of mega
 
 import re
 
+
 def main():
     with open('data.txt', 'r') as f:
         text = f.read()
@@ -22,9 +23,8 @@ def main():
         elif current_key:
             mega[current_key].append(line)
 
-    
-
     print(mega)
+
 
 if __name__ == '__main__':
     main()

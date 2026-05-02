@@ -2,7 +2,6 @@ import logging
 
 
 def logToFile():
-
     logger = logging.getLogger(__name__)
     logger.setLevel(logging.INFO)
     formatter = logging.Formatter("%(asctime)s | %(levelno)s | %(funcName)s| %(message)s")
@@ -16,11 +15,9 @@ def logToFile():
 
 
 def logBasic():
-
     logger = logging.getLogger(__name__)
     level = logging.DEBUG
-    formatter = (" %(levelname)s | %(funcName)s| %(message)s")
-    logging.basicConfig(format=formatter,level=level )
+    formatter = " %(levelname)s | %(funcName)s| %(message)s"
+    logging.basicConfig(format=formatter, level=level)
 
     logger.debug("message")
-
